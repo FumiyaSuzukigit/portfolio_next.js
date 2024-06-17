@@ -12,7 +12,7 @@ export default function IndexPage() {
             href={siteConfig.links.x}
             className="bg-muted px-4 py-1.5  rounded-2xl font-medium text-sm"
           >
-            XXをフォローする
+            Xをフォローする
           </Link>
           <h1 className="font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
             Post Writer
