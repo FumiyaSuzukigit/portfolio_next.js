@@ -1,14 +1,9 @@
 import { allPosts } from "@/.contentlayer/generated";
 import Mdx from "@/components/mdx-component";
-import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { time } from "console";
-import exp from "constants";
 import { format } from "date-fns";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function getPostFromSlug(slug: string) {
@@ -66,6 +61,15 @@ export default async function PostPage({
         {post.date && (
           <time>Published on {format(post.date, "yyyy/MM/dd")}</time>
         )}
+        {post.genre && (
+          <p
+            className={`mt-2 rounded-xl border text-white w-24 text-center flex items-center justify-center ${
+              post.genre === "個人開発" ? "bg-blue-700" : "bg-green-500"
+            }`}
+          >
+            {post.genre}
+          </p>
+        )}
         <h1 className="mt-2 font-extrabold text-4xl lg:text-5xl leading-tight">
           {post.title}
         </h1>
@@ -80,15 +84,6 @@ export default async function PostPage({
         />
       )}
       <Mdx code={post.body.code} />
-      <hr className="mt-12" />
-      <div className="py-6 text-center lg:py-10">
-        <Link
-          href={"/blog"}
-          className={cn(buttonVariants({ variant: "ghost" }))}
-        >
-          全ての記事を見る
-        </Link>
-      </div>
     </article>
   );
 }

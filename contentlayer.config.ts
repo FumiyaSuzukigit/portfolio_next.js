@@ -14,6 +14,9 @@ export const Post = defineDocumentType(() => ({
       type: "boolean",
       default: true,
     },
+    genre: {
+      type: "string",
+    },
     image: {
       type: "string",
       required: true,

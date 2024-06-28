@@ -2,8 +2,6 @@ import MainNav from "@/components/main-nav";
 import SiteFooter from "@/components/site-footer";
 import { buttonVariants } from "@/components/ui/button";
 import { marketingConfig } from "@/config/marketing";
-import { getCurrentUser } from "@/lib/session";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default async function MarketingLayout({
@@ -11,13 +9,13 @@ export default async function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
+  // const user = await getCurrentUser();
   return (
     <div>
       <header className="container z-40 bg-background">
         <div className="h-20 py-6 flex items-center justify-between">
           <MainNav items={marketingConfig.mainNav} />
-          <nav>
+          {/* <nav>
             {user ? (
               <div className="flex gap-4">
                 <Link
@@ -50,7 +48,7 @@ export default async function MarketingLayout({
                 ログイン
               </Link>
             )}
-          </nav>
+          </nav> */}
         </div>
       </header>
       <main>{children}</main>

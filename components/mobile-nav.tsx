@@ -1,14 +1,15 @@
 import { siteConfig } from "@/config/site";
 import { NavItem } from "@/types";
-import { useLockBodyScroll } from "@uidotdev/usehooks";
+// import { useLockBodyScroll } from "@uidotdev/usehooks";
 import Link from "next/link";
 
 interface MobileNavProps {
   items?: NavItem[];
+  closeMobileMenu: () => void;
 }
 
-export default function MobileNav({ items }: MobileNavProps) {
-  useLockBodyScroll();
+export default function MobileNav({ items, closeMobileMenu }: MobileNavProps) {
+  // useLockBodyScroll();
   return (
     <div className="fixed top-16 inset-0 z-50 p-6 shadow-md md:hidden animate-in slide-in-from-bottom-80">
       <div className="grid gap-6 bg-white p-4 text-popover-foreground shadow-md">
@@ -18,7 +19,7 @@ export default function MobileNav({ items }: MobileNavProps) {
         <nav className="text-sm flex gap-4">
           {items?.map((item, index) => (
             <Link key={index} href={item.href}>
-              {item.title}
+              <span onClick={closeMobileMenu}>{item.title}</span>
             </Link>
           ))}
         </nav>
