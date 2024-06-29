@@ -1,4 +1,3 @@
-import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
 import Image from "next/image";
@@ -6,7 +5,11 @@ import { format } from "date-fns";
 import PostsList from "@/components/posts-list";
 
 export default function IndexPage() {
-  const posts = allPosts;
+  const posts = allPosts.slice().sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  });
 
   return (
     <>
@@ -30,12 +33,16 @@ export default function IndexPage() {
         </div>
       </section>
 
-      <section className="container py-8 md:py-12 lg:py-24" id="post">
+      <section
+        className="container my-6 py-8 md:py-12 lg:py-24 bg-slate-50 "
+        id="post"
+      >
         <div className="max-w-[52rem] mx-auto flex flex-col gap-2">
           <div>
             <div className="space-y-4">
-              <h1 className="font-extrabold text-4xl lg:text-5xl tracking-tight">
-                投稿記事(外部サイトへ移動)
+              <h1 className="font-extrabold text-4xl lg:text-5xl tracking-tight flex items-baseline">
+                投稿記事
+                <span className="text-sm ml-2">(外部サイトへ移動)</span>
               </h1>
             </div>
           </div>
@@ -118,7 +125,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">Next.js</h3>
                 <p className="text-sm text-muted-foreground ">
-                  v13~/AppRouter/Layouts/NextAuth
+                  v13~/AppRouter/NextAuth
                 </p>
               </div>
             </div>
@@ -139,7 +146,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">React</h3>
                 <p className="text-sm text-muted-foreground ">
-                  AppRouter/Layouts/APIRoutersの技術を使用
+                  React-hook-form/Recoil
                 </p>
               </div>
             </div>
@@ -180,7 +187,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">TypeScript</h3>
                 <p className="text-sm text-muted-foreground ">
-                  AppRouter/Layouts/APIRoutersの技術を使用
+                  Next.js/Vue.jsでの使用
                 </p>
               </div>
             </div>
@@ -212,9 +219,7 @@ export default function IndexPage() {
               </svg>
               <div className="space-y-2">
                 <h3 className="font-bold">HTML5&CSS</h3>
-                <p className="text-sm text-muted-foreground ">
-                  AppRouter/Layouts/APIRoutersの技術を使用
-                </p>
+                <p className="text-sm text-muted-foreground "></p>
               </div>
             </div>
           </div>
@@ -233,9 +238,7 @@ export default function IndexPage() {
               </svg>
               <div className="space-y-2">
                 <h3 className="font-bold">TailwindCSS</h3>
-                <p className="text-sm text-muted-foreground ">
-                  AppRouter/Layouts/APIRoutersの技術を使用
-                </p>
+                <p className="text-sm text-muted-foreground "></p>
               </div>
             </div>
           </div>
@@ -301,9 +304,7 @@ export default function IndexPage() {
               </svg>
               <div className="space-y-2">
                 <h3 className="font-bold">PHP</h3>
-                <p className="text-sm text-muted-foreground ">
-                  AppRouter/Layouts/APIRoutersの技術を使用
-                </p>
+                <p className="text-sm text-muted-foreground "></p>
               </div>
             </div>
           </div>
@@ -391,7 +392,7 @@ export default function IndexPage() {
               <div className="space-y-2">
                 <h3 className="font-bold">Other skill</h3>
                 <p className="text-sm text-muted-foreground break-words">
-                  Prisma/Supabase/Vercel/Stripe/Heroku/AWS/microCMS/ContentLayer
+                  Prisma/Supabase/Vercel/Stripe/Heroku/AWS/microCMS/ContentLayer/Cloudinary
                 </p>
               </div>
             </div>
