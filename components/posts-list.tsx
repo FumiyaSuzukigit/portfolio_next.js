@@ -23,7 +23,11 @@ async function fetchPosts() {
 export default async function PostsList() {
   const posts: Post[] = await fetchPosts();
 
-  const displayedPosts = posts.slice(0, 3);
+  const filteredPosts = posts.filter(
+    (post) => post.authorId === "clxszm0ci00081076dbbr4t5z"
+  );
+
+  const displayedPosts = filteredPosts.slice(0, 3);
 
   return (
     <div className="max-w-[50rem]">
