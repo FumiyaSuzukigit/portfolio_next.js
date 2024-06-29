@@ -3,6 +3,7 @@ import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
 import Image from "next/image";
 import { format } from "date-fns";
+import PostsList from "@/components/posts-list";
 
 export default function IndexPage() {
   const posts = allPosts;
@@ -29,10 +30,7 @@ export default function IndexPage() {
         </div>
       </section>
 
-      <section
-        className="container py-8 md:py-12 lg:py-24 bg-slate-50"
-        id="post"
-      >
+      <section className="container py-8 md:py-12 lg:py-24" id="post">
         <div className="max-w-[52rem] mx-auto flex flex-col gap-2">
           <div>
             <div className="space-y-4">
@@ -42,17 +40,7 @@ export default function IndexPage() {
             </div>
           </div>
           <hr className="my-2" />
-          <div className="max-w-[50rem]">
-            <a
-              href="/"
-              className="truncate underline text-blue-500 hover:text-blue-800"
-            >
-              vercelへのlaravelアプリのデプロイ時のエラーについて
-            </a>
-            <p className="text-muted-foreground text-sm mt-2">2024-06-18</p>
-            {/* {format(post.date, "yyyy/MM/dd")} */}
-          </div>
-          <hr className="my-2" />
+          <PostsList/>
         </div>
       </section>
 
@@ -63,9 +51,6 @@ export default function IndexPage() {
               <h1 className="font-extrabold text-4xl lg:text-5xl tracking-tight">
                 制作物 💻
               </h1>
-              <p className="text-muted-foreground text-xl">
-                ContentLayer/MDXにて作成
-              </p>
             </div>
           </div>
           <hr className="my-8" />
