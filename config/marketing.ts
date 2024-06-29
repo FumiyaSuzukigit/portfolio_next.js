@@ -4,19 +4,19 @@ export const marketingConfig: MarketingConfig = {
   mainNav: [
     {
       title: "投稿記事",
-      href: "#post",
+      href: "https://portfolio-next-js-six-eta.vercel.app/#post",
     },
     {
       title: "制作物",
-      href: "#works",
+      href: "https://portfolio-next-js-six-eta.vercel.app/#works",
     },
     {
       title: "スキル",
-      href: "#skill",
+      href: "https://portfolio-next-js-six-eta.vercel.app/#skill",
     },
     {
       title: "お問い合わせ",
-      href: "#contact",
+      href: "https://portfolio-next-js-six-eta.vercel.app/#contact",
     },
   ],
 };

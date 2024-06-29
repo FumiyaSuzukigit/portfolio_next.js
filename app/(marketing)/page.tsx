@@ -23,7 +23,7 @@ export default function IndexPage() {
             Fumiya Suzuki
           </h1>
           <p className="sm:text-xl font-bold leading-normal max-w-[42rem] text-slate-700">
-            フルスタックでのwebアプリ開発に取り組んでいます。
+            フロントエンド・バックエンドでのwebアプリ開発に取り組んでいます。
             <br />
             情熱を持ってユーザーに満足いただけるアプリの作成に取り組みます！
           </p>
@@ -35,7 +35,7 @@ export default function IndexPage() {
           <div>
             <div className="space-y-4">
               <h1 className="font-extrabold text-4xl lg:text-5xl tracking-tight">
-                投稿記事
+                投稿記事(外部サイトへ移動)
               </h1>
             </div>
           </div>
@@ -100,9 +100,6 @@ export default function IndexPage() {
       >
         <div className="text-center space-y-6 max-w-[58rem] mx-auto mb-20">
           <h2 className="font-extrabold text-3xl md:text-6xl">MySkill</h2>
-          {/* <p className="text-muted-foreground sm:text-lg sm:leading-7">
-            このプロジェクトはモダンな技術スタックを使って作られたWebアプリケーションです。Next.jsAppRouterやcontetlayerを利用してマークダウン形式でブログ投稿ができます。
-          </p> */}
         </div>
         <div className="mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-[64rem]">
           <div id="next.js" className="bg-background border p-2 rounded-lg">
