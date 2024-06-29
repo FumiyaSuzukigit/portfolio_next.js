@@ -1,4 +1,3 @@
-// app/posts/page.tsx (or js)
 import Link from "next/link";
 
 interface Post {
@@ -12,7 +11,7 @@ async function fetchPosts() {
   const response = await fetch(
     "https://article-post.vercel.app/api/posts/all",
     {
-      next: { revalidate: 60 }, // キャッシュのリバリデート間隔（オプション）
+      cache: "no-store",
     }
   );
   if (!response.ok) {
