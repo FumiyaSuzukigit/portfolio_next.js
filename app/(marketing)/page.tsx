@@ -40,7 +40,7 @@ export default function IndexPage() {
             </div>
           </div>
           <hr className="my-2" />
-          <PostsList/>
+          <PostsList />
         </div>
       </section>
 

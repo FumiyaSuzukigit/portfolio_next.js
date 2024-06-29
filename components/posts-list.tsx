@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
+// app/posts/page.tsx (or js)
 import Link from "next/link";
 
 interface Post {
@@ -10,34 +8,21 @@ interface Post {
   authorId: string;
 }
 
-export default function PostsList() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const response = await fetch(
-          "https://article-post.vercel.app/api/posts/all"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch");
-        }
-        const data: Post[] = await response.json();
-        setPosts(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error as Error);
-        setLoading(false);
-      }
+async function fetchPosts() {
+  const response = await fetch(
+    "https://article-post.vercel.app/api/posts/all",
+    {
+      next: { revalidate: 60 }, // キャッシュのリバリデート間隔（オプション）
     }
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+  return response.json();
+}
 
-    fetchPosts();
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Failed to load posts</p>;
+export default async function PostsList() {
+  const posts: Post[] = await fetchPosts();
 
   const displayedPosts = posts.slice(0, 3);
 
@@ -46,7 +31,7 @@ export default function PostsList() {
       {displayedPosts.map((post) => (
         <div key={post.id}>
           <Link
-            href={`/post/${post.id}`}
+            href={`https://article-post.vercel.app/post/${post.id}`}
             className="truncate underline text-blue-500 hover:text-blue-800"
           >
             {post.title}
