@@ -1,21 +1,45 @@
 "use client";
 
-import useSWR from "swr";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+interface Post {
+  id: string;
+  title: string;
+  updatedAt: string;
+  authorId: string;
+}
 
 export default function PostsList() {
-  const { data: posts, error } = useSWR(
-    "https://article-post.vercel.app/api/posts/all",
-    fetcher
-  );
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch(
+          "https://article-post.vercel.app/api/posts/all"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch");
+        }
+        const data: Post[] = await response.json();
+        setPosts(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error as Error);
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Failed to load posts</p>;
-  if (!posts) return <p>Loading...</p>;
 
   const displayedPosts = posts.slice(0, 3);
-  console.log(posts);
 
   return (
     <div className="max-w-[50rem]">
@@ -36,7 +60,7 @@ export default function PostsList() {
       {posts.length > 3 && (
         <div className="text-center">
           <Link
-            href="/post/postList"
+            href="https://article-post.vercel.app/post/postList"
             className="underline text-blue-500 hover:text-blue-800"
           >
             記事一覧ページへ
