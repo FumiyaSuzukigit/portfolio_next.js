@@ -108,7 +108,7 @@ export default function IndexPage() {
         <div className="text-center space-y-6 max-w-[58rem] mx-auto mb-20">
           <h2 className="font-extrabold text-3xl md:text-6xl">MySkill</h2>
         </div>
-        <div className="mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-[64rem]">
+        <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-[64rem] sm:max-w-full">
           <div id="next.js" className="bg-background border p-2 rounded-lg">
             <div className="flex flex-col justify-between p-6 h-[180]">
               <svg
@@ -381,7 +381,10 @@ export default function IndexPage() {
               </div>
             </div>
           </div>
-          <div id="other" className="bg-background border p-2 rounded-lg">
+          <div
+            id="other"
+            className="bg-background border p-2 rounded-lg  w-full"
+          >
             <div className="flex flex-col justify-between p-6 h-[180]">
               <Image
                 src="/icon/ロボット円形.svg"
@@ -391,7 +394,7 @@ export default function IndexPage() {
               />
               <div className="space-y-2">
                 <h3 className="font-bold">Other skill</h3>
-                <p className="text-sm text-muted-foreground break-words">
+                <p className="text-sm text-muted-foreground break-words  w-full">
                   Prisma/Supabase/Vercel/Stripe/Heroku/AWS/microCMS/ContentLayer/Cloudinary
                 </p>
               </div>
